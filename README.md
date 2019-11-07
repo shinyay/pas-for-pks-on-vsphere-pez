@@ -81,6 +81,44 @@ $ kubectl create clusterrolebinding pas-system-service-account-cluster-binding \
 clusterrolebinding.rbac.authorization.k8s.io/pas-system-service-account-cluster-binding created
 ```
 
+### PAS for Kubernetes
+#### OCI Registry
+- OCI Registory Hostname
+  - <HARBOR HOSTNAME>
+    - harbor.run.haas-###.pez.pivotal.io
+- OCI Registry Credentials
+  - admin
+  - <PEZ MAIN PASSWORD>
+- OCI Registry Repository Name Prefix
+  - <REGISTRY_NAME>
+
+#### Kubernetes
+- Kubernetes URL
+  - `Kubernetes master`
+```
+$ kubectl cluster-info
+
+Kubernetes master is running at https://pas.haas-#.pez.pivotal.io:8443
+CoreDNS is running at https://pas.haas-#.pez.pivotal.io:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+```
+
+- Kubernetes Service Account
+  - `pas-system-service-account`
+```
+secret_name="$(kubectl get serviceaccount -n pas-system \
+  pas-system-service-account -o jsonpath='{.secrets[0].name}')"
+
+kubectl get secret -n pas-system ${secret_name} -o jsonpath='{.data.token}' \
+  | base64 --decode
+```
+
+- Kubernetes CA Certificate
+```
+kubectl config view --raw --minify \
+  -o jsonpath='{.clusters[0].cluster.certificate-authority-data}' \
+  | base64 --decode
+```
+
 ### Harbor UI Login
 - https://harbor.haas-###.pez.pivotal.io
 
