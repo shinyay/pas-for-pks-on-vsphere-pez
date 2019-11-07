@@ -81,6 +81,14 @@ $ kubectl create clusterrolebinding pas-system-service-account-cluster-binding \
 clusterrolebinding.rbac.authorization.k8s.io/pas-system-service-account-cluster-binding created
 ```
 
+### Harbor UI Login
+- https://harbor.haas-###.pez.pivotal.io
+
+### Harbor Login with Docker
+- Certificate
+  - Administration -> Configuration -> System Settings -> Registry Root Certificate
+  - Download -> ca.crt
+
 ## Installation
 
 ## Licence
