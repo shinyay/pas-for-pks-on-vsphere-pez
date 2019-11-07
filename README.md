@@ -63,10 +63,22 @@ $ sudo vim /etc/hosts
 ### Namespace and Service Account
 ```
 $ kubectl create namespace pas-system
+
+namespace/pas-system created
+```
+
+```
 $ kubectl create serviceaccount -n pas-system pas-system-service-account
+
+serviceaccount/pas-system-service-account created
+```
+
+```
 $ kubectl create clusterrolebinding pas-system-service-account-cluster-binding \
   --clusterrole=cluster-admin \
   --serviceaccount pas-system:pas-system-service-account
+
+clusterrolebinding.rbac.authorization.k8s.io/pas-system-service-account-cluster-binding created
 ```
 
 ## Installation
