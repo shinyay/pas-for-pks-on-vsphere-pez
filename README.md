@@ -119,6 +119,10 @@ kubectl config view --raw --minify \
   | base64 --decode
 ```
 
+#### PEZ DNS
+- Register Master Node Host
+  - `pas.haas-###.pez.pivotal.io`
+
 ### Harbor UI Login
 - https://harbor.haas-###.pez.pivotal.io
 
