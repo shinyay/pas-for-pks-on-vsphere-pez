@@ -28,6 +28,11 @@ $ pks login -a api.pks.haas-$HAAS.pez.pivotal.io -u admin -p $UAA_ADMIN_PWD  --c
 ### PKS Cluster
 ```
 $ pks create-cluster pas-for-kubernetes --external-hostname pas.haas-#HAAS.pez.pivotal.io --plan small
+$ pks get-credentials pas-for-kubernetes
+$ kubectl config get-contexts
+
+CURRENT   NAME                 CLUSTER              AUTHINFO                               NAMESPACE
+*         pas-for-kubernetes   pas-for-kubernetes   5ec25835-356e-4125-8fb0-b29230548aad
 ```
 ## Installation
 
