@@ -34,6 +34,41 @@ $ kubectl config get-contexts
 CURRENT   NAME                 CLUSTER              AUTHINFO                               NAMESPACE
 *         pas-for-kubernetes   pas-for-kubernetes   5ec25835-356e-4125-8fb0-b29230548aad
 ```
+
+#### Hosts Configuration
+```
+$ pks cluster pas-for-kubernetes
+
+PKS Version:              1.5.0-build.32
+Name:                     pas-for-kubernetes
+K8s Version:              1.14.5
+Plan Name:                small
+UUID:                     7fe91df2-8110-414c-b97f-f140ae2264ce
+Last Action:              CREATE
+Last Action State:        succeeded
+Last Action Description:  Instance provisioning completed
+Kubernetes Master Host:   pas.haas-XXX.pez.pivotal.io
+Kubernetes Master Port:   8443
+Worker Nodes:             3
+Kubernetes Master IP(s):  10.123.456.789
+Network Profile Name:
+```
+
+```
+$ sudo vim /etc/hosts
+
+10.123.456.789　pas.haas-XXX.pez.pivotal.io
+```
+
+### Namespace and Service Account
+```
+$ kubectl create namespace pas-system
+$ kubectl create serviceaccount -n pas-system pas-system-service-account
+$ kubectl create clusterrolebinding pas-system-service-account-cluster-binding \
+  --clusterrole=cluster-admin \
+  --serviceaccount pas-system:pas-system-service-account
+```
+
 ## Installation
 
 ## Licence
