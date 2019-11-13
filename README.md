@@ -16,7 +16,7 @@ Overview
 ## Usage
 ### Certification for PKS API
 ```
-$ echo <Enterprise PKS - PKS API - Certificate to secure the PKS API> > api.crt
+$ echo <Enterprise PKS - Settings - PKS API - Certificate to secure the PKS API> > api.crt
 ```
 ### PKS Login
 ```
